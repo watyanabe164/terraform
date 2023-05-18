@@ -6,5 +6,5 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "pro-nabehiro-001"
-  location = "East US"
+  location = "japaneast"
 }
