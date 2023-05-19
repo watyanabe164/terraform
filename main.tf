@@ -14,11 +14,6 @@ terraform {
   }
 }
 
-# Azureプロバイダの設定
-provider "azurerm" {
-  features {}
-}
-
 # リソースグループの作成
 resource "azurerm_resource_group" "example" {
   name     = "example-resource-group"
