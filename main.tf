@@ -123,3 +123,27 @@ resource "azurerm_virtual_machine" "example2" {
     ]
   }
 }
+
+resource "azurerm_network_interface" "example1" {
+  name                = "example-nic1"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+
+  ip_configuration {
+    name                          = "example-ipconfig1"
+    subnet_id                     = azurerm_subnet.example.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
+resource "azurerm_network_interface" "example2" {
+  name                = "example-nic2"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+
+  ip_configuration {
+    name                          = "example-ipconfig2"
+    subnet_id                     = azurerm_subnet.example.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
