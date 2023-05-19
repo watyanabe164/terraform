@@ -162,7 +162,7 @@ resource "azurerm_application_gateway" "example" {
   request_routing_rule {
     name                       = "example-routing-rule"
     rule_type                  = "Basic"
-    http_listener_name         = azurerm_application_gateway.example.http_listener[0].name
+    http_listener_name = azurerm_application_gateway.example.http_listener.name
     backend_address_pool_name  = azurerm_application_gateway.example.backend_address_pool[0].name
     backend_http_settings_name = azurerm_application_gateway.example.backend_http_settings[0].name
   }
