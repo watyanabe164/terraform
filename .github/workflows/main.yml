@@ -24,16 +24,24 @@ jobs:
         with:
           terraform_version: "1.0.0"
 
-      - name: Initialize Initialize
+      - name: Initialize Terraform
         run: terraform init
 
-      - name: Initialize Validate
+      - name: Validate Terraform configuration
         run: terraform validate
 
-      - name: Plan Terraform plan
+      - name: Import Azure resource group
+        run: terraform import azurerm_resource_group.example /subscriptions/***/resourceGroups/example-resource-group
+        env:
+          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+          ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+
+      - name: Plan Terraform changes
         run: terraform plan -out=tfplan
 
-      - name: Plan Terraform apply
+      - name: Apply Terraform changes
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply tfplan
         env:
