@@ -82,7 +82,7 @@ resource "azurerm_virtual_machine" "example1" {
 
 # 仮想マシン2の作成（仮想マシン1と同様の設定）
 resource "azurerm_virtual_machine" "example2" {
-  name                  = "example-vm2
+  name                  = "example-vm2"
   location              = azurerm_resource_group.example.location
   resource_group_name   = azurerm_resource_group.example.name
   network_interface_ids = [azurerm_network_interface.example2.id]
