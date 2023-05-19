@@ -31,7 +31,7 @@ jobs:
         run: terraform validate
 
       - name: Import Azure resource group
-        run: terraform import azurerm_resource_group.example /subscriptions/***/resourceGroups/example-resource-group
+        run: terraform import azurerm_resource_group.example /subscriptions/${{ secrets.ARM_SUBSCRIPTION_ID }}/resourceGroups/example-resource-group
         env:
           ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
@@ -39,7 +39,15 @@ jobs:
           ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
 
       - name: Import Azure virtual network
-        run: terraform import azurerm_virtual_network.example /subscriptions/***/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet
+        run: terraform import azurerm_virtual_network.example /subscriptions/${{ secrets.ARM_SUBSCRIPTION_ID }}/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet
+        env:
+          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+          ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+
+      - name: Import Azure virtual network subnet
+        run: terraform import azurerm_virtual_network.example /subscriptions/${{ secrets.ARM_SUBSCRIPTION_ID }}/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-vnet/subnets/example-subnet
         env:
           ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
