@@ -64,7 +64,7 @@ resource "azurerm_virtual_machine" "example1" {
   os_profile {
     computer_name  = "example-vm1"
     admin_username = "adminuser"
-    admin_password = "password1234"
+    admin_password = "watanabE164!"
   }
 
   os_profile_linux_config {
@@ -108,7 +108,7 @@ resource "azurerm_virtual_machine" "example2" {
   os_profile {
     computer_name  = "example-vm2"
     admin_username = "adminuser"
-    admin_password = "password1234"
+    admin_password = "watanabE164!"
   }
 
   os_profile_linux_config {
