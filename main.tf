@@ -86,10 +86,6 @@ resource "azurerm_virtual_machine" "example" {
     disable_password_authentication = false
   }
 
-  boot_diagnostics {
-    storage_account_uri = azurerm_storage_account.example.primary_blob_endpoint
-  }
-
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get update",
