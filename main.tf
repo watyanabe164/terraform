@@ -38,7 +38,7 @@ resource "azurerm_subnet" "example" {
 
 # NICの作成
 resource "azurerm_network_interface" "example" {
-  count               = 3
+  count               = 4
   name                = "example-nic-${count.index}"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
@@ -52,7 +52,7 @@ resource "azurerm_network_interface" "example" {
 
 # VMの作成
 resource "azurerm_virtual_machine" "example" {
-  count                 = 3
+  count                 = 4
   name                  = "example-vm-${count.index}"
   location              = azurerm_resource_group.example.location
   resource_group_name   = azurerm_resource_group.example.name
