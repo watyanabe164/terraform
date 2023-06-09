@@ -36,8 +36,6 @@ resource "azurerm_subnet" "example" {
   address_prefixes     = ["10.0.0.0/24"]
 }
 
-
-
 resource "azurerm_network_interface" "example" {
   count               = 3
   name                = "example-nic-${count.index}"
