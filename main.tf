@@ -70,7 +70,7 @@ resource "azurerm_virtual_machine" "example" {
   }
 
   storage_os_disk {
-    name              = "osdisk"
+    name              = "osdisk-${count.index}"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
