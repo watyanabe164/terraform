@@ -30,11 +30,8 @@ jobs:
         run: terraform plan -out=tfplan
 
       - name: Import existing resource group (if needed)
-        run: |
-          if [ -z "$(terraform state list azurerm_resource_group.example)" ]; then
-            terraform import azurerm_resource_group.example /subscriptions/2a7080ea-1981-457b-aac9-902be7c5f00d/resourceGroups/example-resource-group
-          fi
-
+        run: terraform import azurerm_resource_group.example /subscriptions/2a7080ea-1981-457b-aac9-902be7c5f00d/resourceGroups/example-resource-group
+          
       - name: Apply Terraform changes
         run: terraform apply tfplan
         env:
