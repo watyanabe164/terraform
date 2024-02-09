@@ -52,7 +52,7 @@ resource "azurerm_network_interface" "example" {
 
 # VMの作成
 resource "azurerm_virtual_machine" "example" {
-  count                 = 4
+  count                 = 2
   name                  = "example-vm-${count.index}"
   location              = azurerm_resource_group.example.location
   resource_group_name   = azurerm_resource_group.example.name
