@@ -38,7 +38,7 @@ resource "azurerm_subnet" "example" {
 
 # NICの作成
 resource "azurerm_network_interface" "example" {
-  count               = 4
+  count               = 2
   name                = "example-nic-${count.index}"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
